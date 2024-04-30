@@ -11,10 +11,9 @@ RUN apt-get update && \
 
 COPY install_sslstrip.sh /install_sslstrip.sh
 RUN chmod +x /install_sslstrip.sh
-RUN /install_sslstrip.sh
+RUN /install_sslstrip.sh \
+    rm install_sslstrip.sh
+
 RUN git clone https://github.com/vanhoefm/krackattacks-poc-zerokey.git
-
-
-
 
 CMD ["bash"]
