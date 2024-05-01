@@ -3,7 +3,7 @@
 docker pull kalilinux/kali-rolling
 
 chmod +x ./docker/build_docker.sh
-./docker/build_docker.sh
+bash docker/build_docker.sh
 
 mkdir -p lab
 
