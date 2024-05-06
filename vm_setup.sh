@@ -28,7 +28,7 @@ cp .config krackattacks-scripts/wpa_supplicant/.config
 cp .config krackattacks-scripts/hostap-wpa_supplicant-2.3/wpa_supplicant/.config
 cp .config krackattacks-scripts/hostap-wpa_supplicant-2.5/wpa_supplicant/.config
 
-echo "src/common/attacks.h" > attacks.h
+echo "src/common/attacks.h" > krackattacks-scripts/attacks.h
 
 (cd ./krackattacks-scripts/krackattack/ && ./build.sh)
 (cd ./krackattacks-scripts/krackattack/ && ./pysetup.sh)
