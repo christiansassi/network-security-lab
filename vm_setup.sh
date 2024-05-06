@@ -30,8 +30,9 @@ cp .config krackattacks-scripts/hostap-wpa_supplicant-2.5/wpa_supplicant/.config
 
 echo "src/common/attacks.h" > attacks.h
 
-./krackattacks-scripts/krackattack/build.sh
-./krackattacks-scripts/krackattack/pysetup.sh
+(cd ./krackattacks-scripts/krackattack/ && ./build.sh)
+(cd ./krackattacks-scripts/krackattack/ && ./pysetup.sh)
+
 sudo ./krackattacks-scripts/krackattack/disable-hwcrypto.sh
 
 # Reboot
