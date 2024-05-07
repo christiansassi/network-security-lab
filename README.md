@@ -46,11 +46,10 @@ This repository is intended to be already set up within the Virtual Machines pro
    ```bash
     git clone --recurse-submodules https://github.com/christiansassi/network-security-lab
     ```
-5. Then, inside the repo folder run the `vm_setup.sh`:
-   
+5. Then, inside the `scripts` folder run the `vm_setup.sh`:
+
    ```bash
-    cd network-security-lab
-    ./vm_setup.sh
+    cd network-security-lab/scripts && ./vm_setup.sh
     ```
 
 # Getting started
