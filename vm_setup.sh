@@ -17,7 +17,7 @@ if [ "$(id -u)" -eq 0 ]; then
     exit 1
 fi
 
-# Instal system dependencies
+# Install system dependencies
 echo -e "${GREEN}Installing dependencies...${RESET}"
 sudo apt update
 sudo apt install -y git libnl-3-dev libnl-genl-3-dev pkg-config libssl-dev net-tools git sysfsutils virtualenv wireshark arping openvswitch-switch
