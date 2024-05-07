@@ -8,7 +8,7 @@ fi
 
 # Instal system dependencies
 sudo apt update
-sudo apt install git libnl-3-dev libnl-genl-3-dev pkg-config libssl-dev net-tools git sysfsutils virtualenv wireshark arping
+sudo apt install -y git libnl-3-dev libnl-genl-3-dev pkg-config libssl-dev net-tools git sysfsutils virtualenv wireshark arping openvswitch-switch
 
 # Install mininet
 sudo mininet-wifi/util/install.sh -Wln3fv
@@ -36,4 +36,5 @@ echo "src/common/attacks.h" > krackattacks-scripts/attacks.h
 sudo ./krackattacks-scripts/krackattack/disable-hwcrypto.sh
 
 # Reboot
-sudo reboot
+#sudo reboot
+echo -e "\033[1;32mReboot to apply changes\033[0m"
