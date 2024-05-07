@@ -14,6 +14,12 @@
 
 -   [Introduction](#introduction)
 -   [Installation](#installation)
+-   [Getting Started](#getting-started)
+    -   [Lab 0](#lab-0)
+    -   [Lab 1](#lab-1)
+    -   [Lab 2](#lab-2)
+    -   [Lab 3](#lab-3)
+-   [Contacts](#contacts)
 
 # Introduction
 
@@ -46,3 +52,23 @@ This repository is intended to be already set up within the Virtual Machines pro
     cd network-security-lab
     ./vm_setup.sh
     ```
+
+# Getting started
+
+## Lab 0
+
+## Lab 1
+
+## Lab 2
+
+## Lab 3
+
+# Contacts
+
+Matteo Beltrami - [matteo.beltrami-1@studenti.unitn.it](mailto:pietro.bologna@studenti.unitn.it)
+
+Luca Pedercini - [luca.pedercini@studenti.unitn.it](mailto:luca.pedercini@studenti.unitn.it)
+
+Christian Sassi - [christian.sassi@studenti.unitn.it](mailto:christian.sassi@studenti.unitn.it)
+
+<a href="https://www.unitn.it/"><img src="assets/unitn-logo.png" width="300px"></a>
