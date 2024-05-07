@@ -43,5 +43,4 @@ echo -e "\033[1;32mRunning pysetup.sh...\033[0m"
 sudo ./krackattacks-scripts/krackattack/disable-hwcrypto.sh
 
 # Reboot
-#sudo reboot
 echo -e "\033[1;32mReboot to apply changes\033[0m"
