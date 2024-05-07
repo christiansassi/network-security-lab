@@ -5,7 +5,7 @@ RESET="\033[0m"
 
 # Set netsec user as root
 su root -c '
-if [ $(sudo cat /etc/sudoers | grep -q "netsec ALL=(ALL:ALL) ALL" ; echo $?) -eq 1]
+if [ $(sudo cat /etc/sudoers | grep -q "netsec ALL=(ALL:ALL) ALL" ; echo $?) -eq 1 ]
 then
     echo "netsec ALL=(ALL:ALL) ALL" >> /etc/sudoers
 fi
