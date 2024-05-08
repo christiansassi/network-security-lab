@@ -3,6 +3,8 @@
 width=$(tput cols)
 height=$(tput lines)
 
-xterm -geometry "$((width / 2))x$((height / 2))+0+0"
-xterm -geometry "$((width / 2))x$((height / 2))+0+$((height / 2 + 1))"
-xterm -geometry "$((width / 2))x$((height / 2))+$((width / 2 + 1))+$height"
+xterm -geometry "$((width / 2))x$((height / 2))+0+0" -e "python3 client.py" &
+xterm -geometry "$((width / 2))x$((height / 2))+0-0" -e "python3 server.py" &
+xterm -geometry "$((width / 2))x$((height / 2))-0+0" -e "python3 mitm.py" &
+
+wait

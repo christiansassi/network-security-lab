@@ -1,22 +1,20 @@
 import socket
-
 import logging
 from time import sleep
 import sys
-
 import params
 import utils
 
 if __name__ == "__main__":
 
     utils.clear_screen()
-    print(f"{utils.color.RED}{params.MITM_SPLASH_SCREEN}{utils.color.RESET}")
+    print(utils.color.RED, params.MITM_SPLASH_SCREEN, utils.color.RESET)
 
     input("Press Enter to start the simulation...")
     sys.stdout.write("\033[F")
     sys.stdout.write("\033[K")
 
-    print(" "*100, end="\r")
+    print(" " * 100, end="\r")
 
     # Init connection to the server
     logging.debug("Init mitm socket (-> SERVER)")
@@ -31,7 +29,7 @@ if __name__ == "__main__":
         except ConnectionRefusedError:
             sleep(1)
 
-    logging.debug(f"Connected to {params.SERVER_ADDR}")
+    logging.debug("Connected to " + params.SERVER_ADDR)
 
     # Init connection for the client
     logging.debug("Init mitm socket (<- CLIENT)")
@@ -50,64 +48,64 @@ if __name__ == "__main__":
         if not mitm_client_connection:
             break
         
-        logging.debug(f"Connected to {address[0]}")
+        logging.debug("Connected to " + address[0])
 
-        #? Phase 1
-        logging.info(f"{utils.background.MAGENTA}PHASE 1{utils.background.RESET}")
+        # Phase 1
+        logging.info(utils.background.MAGENTA + "PHASE 1" + utils.background.RESET)
     
         message = mitm_socket_server.recv(params.BUFF_SIZE)
         mitm_client_connection.send(message)
-        logging.info(f"{utils.color.GRAY}Forwarding{utils.color.RESET} {message.decode().strip()}")
+        logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
 
         message = mitm_client_connection.recv(params.BUFF_SIZE)
         mitm_socket_server.send(message)
-        logging.info(f"{utils.color.GRAY}Forwarding{utils.color.RESET} {message.decode().strip()}")
+        logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
 
         message = mitm_socket_server.recv(params.BUFF_SIZE)
         mitm_client_connection.send(message)
-        logging.info(f"{utils.color.GRAY}Forwarding{utils.color.RESET} {message.decode().strip()}")
+        logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
 
         # In a real attack, this would be blocked by the attacker (mitm client)
         message = mitm_client_connection.recv(params.BUFF_SIZE)
-        logging.info(f"{utils.color.LIGHT_RED}Blocking{utils.color.RESET} {message.decode().strip()}")
+        logging.info(utils.color.LIGHT_RED + "Blocking" + utils.color.RESET + " " + message.decode().strip())
     
-        #? Phase 2
+        # Phase 2
         print("")
-        logging.info(f"{utils.background.MAGENTA}PHASE 2{utils.background.RESET}")
+        logging.info(utils.background.MAGENTA + "PHASE 2" + utils.background.RESET)
 
         # In a real attack, this would be blocked by the attacker (mitm client)
         message = mitm_client_connection.recv(params.BUFF_SIZE)
-        logging.info(f"{utils.color.LIGHT_RED}Blocking{utils.color.RESET} {message.decode().strip()}")
+        logging.info(utils.color.LIGHT_RED + "Blocking" + utils.color.RESET + " " + message.decode().strip())
 
-        #? Phase 3
+        # Phase 3
         print("")
-        logging.info(f"{utils.background.MAGENTA}PHASE 3{utils.background.RESET}")
+        logging.info(utils.background.MAGENTA + "PHASE 3" + utils.background.RESET)
 
         message = mitm_socket_server.recv(params.BUFF_SIZE)
         mitm_client_connection.send(message)
-        logging.info(f"{utils.color.GRAY}Forwarding{utils.color.RESET} {message.decode().strip()}")
+        logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
 
         message = mitm_client_connection.recv(params.BUFF_SIZE)
 
-        #? Phase 4
+        # Phase 4
         print("")
-        logging.info(f"{utils.background.MAGENTA}PHASE 4{utils.background.RESET}")
+        logging.info(utils.background.MAGENTA + "PHASE 4" + utils.background.RESET)
 
         mitm_socket_server.send(message)
-        logging.info(f"{utils.color.GRAY}Forwarding{utils.color.RESET} {message.decode().strip()}")
+        logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
 
-        logging.info(f"{utils.color.CYAN}Sending{utils.color.RESET} Msg4(r+1)")
-        mitm_socket_server.send(b"Msg4(r+1)".ljust(params.BUFF_SIZE)) 
+        logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Msg4(r+1)")
+        mitm_socket_server.send("Msg4(r+1)".ljust(params.BUFF_SIZE).encode()) 
 
-        #? Phase 5
+        # Phase 5
         print("")
-        logging.info(f"{utils.background.MAGENTA}PHASE 5{utils.background.RESET}")
+        logging.info(utils.background.MAGENTA + "PHASE 5" + utils.background.RESET)
 
         message = mitm_client_connection.recv(params.BUFF_SIZE)
         mitm_socket_server.send(message) 
-        logging.info(f"{utils.color.GRAY}Forwarding{utils.color.RESET} {message.decode().strip()}")
+        logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
 
-        logging.debug(f"{address[0]} disconnected")
+        logging.debug(address[0] + " disconnected")
 
         break
 
