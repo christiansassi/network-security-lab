@@ -40,7 +40,7 @@ sed -i "/if self.sock_eth: self.sock_eth.close()/a\\$new_line" ../krackattacks-s
 # Setup krackattacks
 echo -e "${GREEN}Setup krackattacks...${RESET}"
 git clone git://w1.fi/hostap.git ../krackattacks-scripts/hostap-wpa_supplicant-2.3
-git clone git://w1.fi/hostap.git ../krackattacks-scripts/hostap-wpa_supplicant-2.5
+cp -r ../krackattacks-scripts/hostap-wpa_supplicant-2.3 ../krackattacks-scripts/hostap-wpa_supplicant-2.5
 
 cp .config ../krackattacks-scripts/wpa_supplicant/.config
 cp .config ../krackattacks-scripts/hostap-wpa_supplicant-2.3/wpa_supplicant/.config
