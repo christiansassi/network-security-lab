@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 options=("Lab 0" "Lab 1" "Lab 2" "Lab 3" "Ctr+C to exit")
 width=25
 cols=1
@@ -23,10 +25,12 @@ while true; do
 
         1)
             (cd ./labs/lab-1/ ; chmod +x start.sh ; ./start.sh)
+            sudo mn -c
             ;;
 
         2)
             (cd ./labs/lab-2/ ; chmod +x start.sh ; ./start.sh)
+            sudo mn -c
             ;;
 
         3)
