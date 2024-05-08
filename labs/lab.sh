@@ -22,7 +22,7 @@ while true; do
 
     case $opt in
         0)
-            (cd ./lab-0/ ; chmod +x start.sh ; ./start.sh)
+            (cd ./labs/lab-0/ ; chmod +x start.sh ; ./start.sh)
             ;;
 
         1)
