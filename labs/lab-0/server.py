@@ -33,15 +33,15 @@ if __name__ == "__main__":
 
         logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Msg1(r, ANonce)")
         server_mitm_connection.send("Msg1(r, ANonce)".ljust(params.BUFF_SIZE).encode())
-        sleep(params.DELAY)
+        
 
         logging.info(utils.color.LIGHT_BLUE + "Waiting" + utils.color.RESET + " Msg2(r; SNonce)")
         message = server_mitm_connection.recv(params.BUFF_SIZE)
-        sleep(params.DELAY)
+        
 
         logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Msg3(r+1, GTK)")
         server_mitm_connection.send("Msg3(r+1, GTK)".ljust(params.BUFF_SIZE).encode())
-        sleep(params.DELAY)
+        
 
         # Phase 2
         print("")
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
         logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Msg3(r+2, GTK)")
         server_mitm_connection.send("Msg3(r+2, GTK)".ljust(params.BUFF_SIZE).encode())
-        sleep(params.DELAY)
+        
 
         # Phase 4
         print("")
@@ -61,11 +61,11 @@ if __name__ == "__main__":
 
         logging.info(utils.color.LIGHT_BLUE + "Waiting" + utils.color.RESET + " Enc_2_ptk{Msg4(r+2)}")
         message = server_mitm_connection.recv(params.BUFF_SIZE)
-        sleep(params.DELAY)
+        
 
         logging.info(utils.color.LIGHT_BLUE + "Waiting" + utils.color.RESET + " EMsg4(r+1)")
         message = server_mitm_connection.recv(params.BUFF_SIZE)
-        sleep(params.DELAY)
+        
 
         # Phase 5
         print("")
@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
         logging.info(utils.color.LIGHT_BLUE + "Waiting" + utils.color.RESET + " Enc_1_ptk{Data(...)}}")
         message = server_mitm_connection.recv(params.BUFF_SIZE)
-        sleep(params.DELAY)
+        
 
         server_mitm_connection.close()
         logging.debug(address[0] + " disconnected")

@@ -29,20 +29,20 @@ if __name__ == "__main__":
 
     logging.info(utils.color.LIGHT_BLUE + "Waiting" + utils.color.RESET + " Msg1(r; ANonce)")
     message = client_socket.recv(params.BUFF_SIZE)
-    sleep(params.DELAY)
+    
 
     logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Msg2(r; SNonce)")
     client_socket.send("Msg2(r; SNonce)".ljust(params.BUFF_SIZE).encode())
-    sleep(params.DELAY)
+    
 
     logging.info(utils.color.LIGHT_BLUE + "Waiting" + utils.color.RESET + " Msg3(r+1; GTK)")
     message = client_socket.recv(params.BUFF_SIZE)
-    sleep(params.DELAY)
+    
 
     # In a real attack, this would be blocked by the attacker (mitm client)
     logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Msg4(r+1)")
     client_socket.send("Msg4(r+1)".ljust(params.BUFF_SIZE).encode())
-    sleep(params.DELAY)
+    
 
     # Phase 2
     print("")
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     # In a real attack, this would be blocked by the attacker (mitm client)
     logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Enc_1_ptk{Data(...)}")
     client_socket.send("Enc_1_ptk{Data(...)}".ljust(params.BUFF_SIZE).encode())
-    sleep(params.DELAY)
+    
 
     # Phase 3
     print("")
@@ -61,12 +61,12 @@ if __name__ == "__main__":
 
     logging.info(utils.color.LIGHT_BLUE + "Waiting" + utils.color.RESET + " Msg3(r+2; GTK)")
     message = client_socket.recv(params.BUFF_SIZE)
-    sleep(params.DELAY)
+    
 
     # In a real attack, this would be blocked by the attacker (MITM client)
     logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Enc_2_ptk{Msg4(r+2)}")
     client_socket.send("Enc_2_ptk{Msg4(r+2)}".ljust(params.BUFF_SIZE).encode())
-    sleep(params.DELAY)
+    
 
     logging.info("Reinstall PTK & GTK")
 

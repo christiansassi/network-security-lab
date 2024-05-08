@@ -54,21 +54,25 @@ if __name__ == "__main__":
         logging.info(utils.background.MAGENTA + "PHASE 1" + utils.background.RESET)
     
         message = mitm_socket_server.recv(params.BUFF_SIZE)
-        mitm_client_connection.send(message)
         logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
+        input()
+        mitm_client_connection.send(message)
 
         message = mitm_client_connection.recv(params.BUFF_SIZE)
-        mitm_socket_server.send(message)
         logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
+        input()
+        mitm_socket_server.send(message)
 
         message = mitm_socket_server.recv(params.BUFF_SIZE)
-        mitm_client_connection.send(message)
         logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
+        input()
+        mitm_client_connection.send(message)
 
         # In a real attack, this would be blocked by the attacker (mitm client)
         message = mitm_client_connection.recv(params.BUFF_SIZE)
         logging.info(utils.color.LIGHT_RED + "Blocking" + utils.color.RESET + " " + message.decode().strip())
-    
+        input()
+
         # Phase 2
         print("")
         logging.info(utils.background.MAGENTA + "PHASE 2" + utils.background.RESET)
@@ -76,14 +80,16 @@ if __name__ == "__main__":
         # In a real attack, this would be blocked by the attacker (mitm client)
         message = mitm_client_connection.recv(params.BUFF_SIZE)
         logging.info(utils.color.LIGHT_RED + "Blocking" + utils.color.RESET + " " + message.decode().strip())
+        input()
 
         # Phase 3
         print("")
         logging.info(utils.background.MAGENTA + "PHASE 3" + utils.background.RESET)
 
         message = mitm_socket_server.recv(params.BUFF_SIZE)
-        mitm_client_connection.send(message)
         logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
+        input()
+        mitm_client_connection.send(message)
 
         message = mitm_client_connection.recv(params.BUFF_SIZE)
 
@@ -91,10 +97,12 @@ if __name__ == "__main__":
         print("")
         logging.info(utils.background.MAGENTA + "PHASE 4" + utils.background.RESET)
 
-        mitm_socket_server.send(message)
         logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
+        input()
+        mitm_socket_server.send(message)
 
         logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Msg4(r+1)")
+        input()
         mitm_socket_server.send("Msg4(r+1)".ljust(params.BUFF_SIZE).encode()) 
 
         # Phase 5
@@ -102,8 +110,9 @@ if __name__ == "__main__":
         logging.info(utils.background.MAGENTA + "PHASE 5" + utils.background.RESET)
 
         message = mitm_client_connection.recv(params.BUFF_SIZE)
-        mitm_socket_server.send(message) 
         logging.info(utils.color.GRAY + "Forwarding" + utils.color.RESET + " " + message.decode().strip())
+        input()
+        mitm_socket_server.send(message) 
 
         logging.debug(address[0] + " disconnected")
 
