@@ -25,18 +25,18 @@ def topology():
     net = Mininet_wifi(link=wmediumd, wmediumd_mode=interference)
 
     info("*** Creating nodes\n")
-    sta1 = net.addStation('sta1', ip='10.0.0.1/24', position='50,0,0',
+    sta1 = net.addStation('sta1', ip='10.0.0.1/8', position='50,0,0',
                           encrypt='wpa2')    
 
     info("*** Configuring AP settings\n")
     # Configuration of access point 1 and 2
-    ap1 = net.addAccessPoint('ap1',  mac='02:11:11:11:11:11', ssid="testnetwork", mode="g", 
+    ap1 = net.addAccessPoint('ap1',  mac='02:00:00:00:01:00', ssid="handover", mode="g", 
                              channel="1", ieee80211r='yes', mobility_domain='a1b2', 
-                             passwd='abcdefgh', encrypt='wpa2', position='10,30,0', 
+                             passwd='123456789a', encrypt='wpa2', position='10,30,0', 
                              inNamespace=True, datapath="user", failMode="standalone")
-    ap2 = net.addAccessPoint('ap2', mac='02:22:22:22:22:22', ssid="testnetwork", mode="g", 
+    ap2 = net.addAccessPoint('ap2', mac='02:00:00:00:02:00', ssid="handover", mode="g", 
                              channel="6", ieee80211r='yes', mobility_domain='a1b2', 
-                             passwd='abcdefgh', encrypt='wpa2', position='100,30,0', 
+                             passwd='123456789a', encrypt='wpa2', position='100,30,0', 
                              inNamespace=True, datapath="user", failMode="standalone")
 
     info("*** Configuring Propagation Model\n")
@@ -53,8 +53,8 @@ def topology():
 
     info("*** Starting network\n")
     net.build()
-    ap1.cmd('ifconfig ap1-wlan1 10.0.0.101/24')
-    ap2.cmd('ifconfig ap2-wlan1 10.0.0.102/24')
+    ap1.cmd('ifconfig ap1-wlan1 10.0.0.101/8')
+    ap2.cmd('ifconfig ap2-wlan1 10.0.0.102/8')
     os.system('ip link set hwsim0 up')
 
 
@@ -78,10 +78,10 @@ def topology():
     # start wireshark
     sta1.cmd("wireshark &")
 
-    # sleep(5)
+    sleep(5)
 
-    # # We need AP scanning. Otherwise, roam won't work
-    # makeTerm(sta1, title='Scanning', cmd="bash -c 'echo \"AP Scanning\" && wpa_cli -i sta1-wlan0 scan; read;'")
+    # We need AP scanning. Otherwise, roam won't work
+    makeTerm(sta1, title='Scanning', cmd="bash -c 'echo \"AP Scanning\" && wpa_cli -i sta1-wlan0 scan; read;'")
 
     sleep(15)
 
