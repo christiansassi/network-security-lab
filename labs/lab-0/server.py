@@ -63,7 +63,7 @@ if __name__ == "__main__":
         message = server_mitm_connection.recv(params.BUFF_SIZE)
         
 
-        logging.info(utils.color.LIGHT_BLUE + "Waiting" + utils.color.RESET + " EMsg4(r+1)")
+        logging.info(utils.color.LIGHT_BLUE + "Waiting" + utils.color.RESET + " Msg4(r+1)")
         message = server_mitm_connection.recv(params.BUFF_SIZE)
         
 
