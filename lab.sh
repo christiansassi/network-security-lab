@@ -1,31 +1,38 @@
 #!/bin/bash
 
-# Customize the prompt to "Lab"
-PS3="Lab "
+options=("Lab 0" "Lab 1" "Lab 2" "Lab 3" "Ctr+C to exit")
+width=25
+cols=1
 
-# Define your menu options
-options=("Lab 0" "Lab 1" "Lab 2" "Lab 3" "Quit")
+for ((i=0;i<${#options[@]};i++)); do 
+    string="- ${options[$i]}"
+    printf "%s" "$string"
+    printf "%$(($width-${#string}))s" " "
+    [[ $(((i+1)%$cols)) -eq 0 ]] && echo
+done
 
-# Prompt the user to select an option
-select opt in "${options[@]}"; do
-    case $REPLY in
+while true; do
+
+    echo
+    read -p "Lab " opt
+
+    case $opt in
         0)
             (cd ./labs/lab-0/ ; chmod +x start.sh ; ./start.sh)
             ;;
 
         1)
+            (cd ./labs/lab-1/ ; chmod +x start.sh ; ./start.sh)
             ;;
 
         2)
+            (cd ./labs/lab-2/ ; chmod +x start.sh ; ./start.sh)
             ;;
 
         3)
             ;;
 
-        4)
-            break
-            ;;
-
         *) ;;
     esac
 done
+
