@@ -26,11 +26,11 @@ while true; do
             ;;
 
         1)
-            (cd ./lab-1/ ; chmod +x start.sh ; ./start.sh)
+            (cd ./labs/lab-1/ ; chmod +x start.sh ; ./start.sh)
             ;;
 
         2)
-            (cd ./lab-2/ ; chmod +x start.sh ; ./start.sh)
+            (cd ./labs/lab-2/ ; chmod +x start.sh ; ./start.sh)
             ;;
 
         3)
