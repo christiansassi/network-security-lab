@@ -29,6 +29,9 @@ sudo ../mininet-wifi/util/install.sh -Wln3fv
 # Patch krackattacks
 echo -e "${GREEN}Patching krackattacks scripts...${RESET}"
 new_interface="ap1-wlan0"
+sed -i "s/interface=.*/interface=$new_interface/" ../krackattacks-scripts/krackattack/hostapd.conf
+
+new_interface="sta1-wlan0"
 sed -i "s/interface=.*/interface=$new_interface/" ../krackattacks-scripts/hostapd/hostapd.conf
 
 new_line='		subprocess.call(["iw", self.nic_mon, "del"])'
