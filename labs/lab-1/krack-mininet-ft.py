@@ -81,25 +81,21 @@ def topology():
     sleep(5)
 
     # We need AP scanning. Otherwise, roam won't work
-    scanning_terminal = makeTerm(sta1, title='Scanning', cmd="bash -c 'echo \"AP Scanning\" && wpa_cli -i sta1-wlan0 scan; read;'")
+    makeTerm(sta1, title='Scanning', cmd="bash -c 'echo \"AP Scanning\" && wpa_cli -i sta1-wlan0 scan; read;'")
 
     sleep(15)
 
     # remove any previosly opened interfaces
     sta1.cmd("killall wpa_supplicant")
     # Initialize the FT test monitor
-    krack_attack_terminal = makeTerm(sta1, title='KrackAttack', cmd="bash -c 'cd ../../krackattacks-scripts/krackattack && source venv/bin/activate && python krack-ft-test.py wpa_supplicant -D nl80211 -i sta1-wlan0 -c ../../labs/lab-1/sta1-wlan0_0.staconf;'")
-    wpa_cli_terminal = makeTerm(sta1, title='wpa_cli')
+    makeTerm(sta1, title='KrackAttack', cmd="bash -c 'cd ../../krackattacks-scripts/krackattack && source venv/bin/activate && python krack-ft-test.py wpa_supplicant -D nl80211 -i sta1-wlan0 -c ../../labs/lab-1/sta1-wlan0_0.staconf;'")
+    makeTerm(sta1, title='wpa_cli')
 
     info("*** Running CLI\n")
     CLI(net)
 
     info("*** Stopping network\n")
     net.stop()
-
-    scanning_terminal.kill()
-    krack_attack_terminal.kill()
-    wpa_cli_terminal.kill()
 
 if __name__ == '__main__':
     setLogLevel('info')

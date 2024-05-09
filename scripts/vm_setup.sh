@@ -46,8 +46,6 @@ cp .config ../krackattacks-scripts/wpa_supplicant/.config
 cp .config ../krackattacks-scripts/hostap-wpa_supplicant-2.3/wpa_supplicant/.config
 cp .config ../krackattacks-scripts/hostap-wpa_supplicant-2.5/wpa_supplicant/.config
 
-echo "src/common/attacks.h" > ../krackattacks-scripts/attacks.h
-
 echo -e "${GREEN}Running build.sh...${RESET}"
 (cd ../krackattacks-scripts/krackattack/ && ./build.sh)
 
@@ -56,6 +54,12 @@ echo -e "${GREEN}Running pysetup.sh...${RESET}"
 
 echo -e "${GREEN}Running disable-hwcrypto.sh...${RESET}"
 sudo ../krackattacks-scripts/krackattack/disable-hwcrypto.sh
+
+# Final fix
+chmod +x ../launcher.sh
+chmod +x ../labs/lab-0/start.sh
+chmod +x ../labs/lab-1/start.sh
+chmod +x ../labs/lab-2/start.sh
 
 # Reboot
 echo -e "${GREEN}Reboot your computer to apply the changes${RESET}"
