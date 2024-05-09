@@ -42,9 +42,9 @@ echo -e "${GREEN}Setup krackattacks...${RESET}"
 git clone git://w1.fi/hostap.git ../krackattacks-scripts/hostap-wpa_supplicant-2.3
 cp -r ../krackattacks-scripts/hostap-wpa_supplicant-2.3 ../krackattacks-scripts/hostap-wpa_supplicant-2.5
 
-cp config ../krackattacks-scripts/wpa_supplicant/.config
-cp config ../krackattacks-scripts/hostap-wpa_supplicant-2.3/wpa_supplicant/.config
-cp config ../krackattacks-scripts/hostap-wpa_supplicant-2.5/wpa_supplicant/.config
+cp ../config/config ../krackattacks-scripts/wpa_supplicant/.config
+cp ../config/config ../krackattacks-scripts/hostap-wpa_supplicant-2.3/wpa_supplicant/.config
+cp ../config/config ../krackattacks-scripts/hostap-wpa_supplicant-2.5/wpa_supplicant/.config
 
 echo -e "${GREEN}Running build.sh...${RESET}"
 (cd ../krackattacks-scripts/krackattack/ && ./build.sh)
