@@ -88,7 +88,7 @@ def topology():
     # remove any previosly opened interfaces
     sta1.cmd("killall wpa_supplicant")
     # Initialize the FT test monitor
-    krack_attack_terminal = makeTerm(sta1, title='KrackAttack', cmd="bash -c 'cd ../../krackattacks-scripts/krackattack && source venv/bin/activate && python krack-ft-test.py wpa_supplicant -D nl80211 -i sta1-wlan0 -c ../../labs/lab-1/sta1-wlan0_0.staconf;)'")
+    krack_attack_terminal = makeTerm(sta1, title='KrackAttack', cmd="bash -c 'cd ../../krackattacks-scripts/krackattack && source venv/bin/activate && python krack-ft-test.py wpa_supplicant -D nl80211 -i sta1-wlan0 -c ../../labs/lab-1/sta1-wlan0_0.staconf;'")
     wpa_cli_terminal = makeTerm(sta1, title='wpa_cli')
 
     info("*** Running CLI\n")
