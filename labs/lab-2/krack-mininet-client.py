@@ -62,7 +62,7 @@ def topology():
     sleep(10)
 
     # launch script listener script on the access point
-    makeTerm(ap1, title='AP', cmd="bash -c 'cd krackattacks-scripts/krackattack && source venv/bin/activate && python krack-test-client.py;'")
+    makeTerm(ap1, title='AP', cmd="bash -c 'cd ../../krackattacks-scripts/krackattack && source venv/bin/activate && python krack-test-client.py;'")
 
     sleep(5)
     
