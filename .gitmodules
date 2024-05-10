@@ -4,3 +4,4 @@
 [submodule "krackattacks-scripts"]
 	path = krackattacks-scripts
 	url = https://github.com/vanhoefm/krackattacks-scripts
+    branch = krack-attack
