@@ -4,8 +4,8 @@
 determine whether an implementation is vulnerable to attacks on FT protocol 802.11r
 in a Mininet-wifi environment."""
 
-__author__ = "Ramon Fontes and UNITN 2022/2023 Network Security master course Group14 Lab"
-__credits__ = ["https://github.com/vanhoefm/krackattacks-scripts"]
+__author__ = "UNITN 2023/2024 Network Security master course Group8 Lab"
+__credits__ = ["https://github.com/vanhoefm/krackattacks-scripts", "https://github.com/vanhoefm/krackattacks-poc-zerokey"]
 
 from time import sleep
 import subprocess
@@ -32,7 +32,7 @@ def topology():
     # Configuration of access point 1 and 2
     ap1 = net.addAccessPoint('ap1',  mac='02:11:11:11:11:11', ssid="testnetwork", mode="g", 
                              channel="1", ieee80211r='yes', mobility_domain='a1b2', 
-                             passwd='abcdefgh', encrypt='wpa2', position='10,30,0', 
+                             passwd='abcdefgh', encrypt='wpa2', position='0,30,0', 
                              inNamespace=True, datapath="user", failMode="standalone")
     ap2 = net.addAccessPoint('ap2', mac='02:22:22:22:22:22', ssid="testnetwork", mode="g", 
                              channel="6", ieee80211r='yes', mobility_domain='a1b2', 
@@ -78,11 +78,6 @@ def topology():
     # start wireshark
     sta1.cmd("wireshark &")
 
-    # sleep(5)
-
-    # # We need AP scanning. Otherwise, roam won't work
-    # makeTerm(sta1, title='Scanning', cmd="bash -c 'echo \"AP Scanning\" && wpa_cli -i sta1-wlan0 scan; read;'")
-
     sleep(15)
 
     # remove any previosly opened interfaces
@@ -96,6 +91,7 @@ def topology():
 
     info("*** Stopping network\n")
     net.stop()
+
 
 if __name__ == '__main__':
     setLogLevel('info')
