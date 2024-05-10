@@ -1,8 +1,7 @@
 [submodule "krackattacks-scripts"]
 	path = krackattacks-scripts
-	url = https://github.com/turbostar190/krackattacks-scripts.git
-	branch = 92c991e
+	url = https://github.com/vanhoefm/krackattacks-scripts.git
 [submodule "mininet-wifi"]
 	path = mininet-wifi
-	url = https://github.com/turbostar190/mininet-wifi
+	url = https://github.com/intrig-unicamp/mininet-wifi
 	branch = krack-attack
