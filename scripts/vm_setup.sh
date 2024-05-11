@@ -39,11 +39,6 @@ sed -i "/if self.sock_eth: self.sock_eth.close()/a\\$new_line" ../krackattacks-s
 
 # Setup krackattacks
 echo -e "${GREEN}Setup krackattacks...${RESET}"
-wget https://w1.fi/cgit/hostap/snapshot/hostap_2_3.zip
-unzip hostap_2_3.zip
-mv hostap_2_3 ../krackattacks-scripts/hostap-wpa_supplicant-2.3
-unzip hostap_2_3.zip
-
 wget https://w1.fi/cgit/hostap/snapshot/hostap_2_5.zip
 unzip hostap_2_5.zip
 mv hostap_2_5 ../krackattacks-scripts/hostap-wpa_supplicant-2.5
