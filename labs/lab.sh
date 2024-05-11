@@ -1,6 +1,6 @@
 #!/bin/bash
 
-options=("Lab 0" "Lab 1" "Lab 2" "Lab 3" "Ctr+C to exit")
+options=("Lab 0: Simulation" "Lab 1: Access Point (AP) testing" "Lab 2: Client (STA) testing" "Lab 3: Krack Attack" "Ctr+C to exit")
 width=25
 cols=1
 
@@ -8,7 +8,7 @@ while true; do
 
     clear
 
-    cat ../assets/splashscreen.txt
+    cat ./assets/splashscreen.txt
 
     for ((i=0;i<${#options[@]};i++)); do 
         string="- ${options[$i]}"
