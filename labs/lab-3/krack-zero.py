@@ -4,8 +4,8 @@
 determine whether an implementation is vulnerable to attacks on FT protocol 802.11r
 in a Mininet-wifi environment."""
 
-__author__ = "Ramon Fontes and UNITN 2022/2023 Network Security master course Group14 Lab"
-__credits__ = ["https://github.com/vanhoefm/krackattacks-scripts"]
+__author__ = "UNITN 2023/2024 Network Security master course Group8 Lab"
+__credits__ = ["https://github.com/vanhoefm/krackattacks-scripts", "https://github.com/vanhoefm/krackattacks-poc-zerokey"]
 
 from time import sleep
 import subprocess
@@ -25,12 +25,12 @@ def topology():
     net = Mininet_wifi(link=wmediumd, wmediumd_mode=interference)
 
     info("*** Creating nodes\n")
-    sta1 = net.addStation('sta1', ip='10.0.0.1/8', position='50,0,0',encrypt='wpa2')    
-    krack = net.addStation('kra', ip='10.0.0.2/8', position='100,0,0',encrypt='wpa2')
+    sta1 = net.addStation('sta1', ip='10.0.0.1/24', mac="02:00:00:00:01:00", position='50,0,0',encrypt='wpa2')    
+    kra = net.addStation('kra', ip='10.0.0.2/24', mac="02:00:00:00:02:00", position='20,0,0',encrypt='wpa2')
 
     info("*** Configuring AP settings\n")
     # Configuration of access point 1 and 2
-    ap1 = net.addAccessPoint('ap1',  mac='02:00:00:00:01:00', ssid="testnetwork", mode="g", 
+    ap1 = net.addAccessPoint('ap1',  mac='02:00:00:00:99:00', ssid="testnetwork", mode="g", 
                              channel="1", ieee80211r='no', mobility_domain='a1b2', 
                              passwd='abcdefgh', encrypt='wpa2', position='150,0,0', 
                              inNamespace=True, datapath="user", failMode="standalone")
@@ -42,16 +42,16 @@ def topology():
     net.configureWifiNodes()
 
     info("*** Linking nodes\n")
-    net.addLink(sta1, krack)
-    net.addLink(krack, ap1)
-    net.addLink(sta1, ap1)
+    # net.addLink(sta1, krack)
+    # net.addLink(krack, ap1)
+    # net.addLink(sta1, ap1)
 
-    info("*** Plotting Graph\n")
-    net.plotGraph(min_x=-100, min_y=-100, max_x=200, max_y=200)
+    # info("*** Plotting Graph\n")
+    # net.plotGraph(min_x=-100, min_y=-100, max_x=200, max_y=200)
 
     info("*** Starting network\n")
     net.build()
-    ap1.cmd('ifconfig ap1-wlan1 10.0.0.101/8')
+    ap1.cmd('ifconfig ap1-wlan1 10.0.0.101/24') # IP ACCESS POINT
     os.system('ip link set hwsim0 up')
 
 
@@ -59,6 +59,9 @@ def topology():
     # interface controller (WNIC) to monitor all traffic received on a wireless channel
     sta1.cmd("iw dev sta1-wlan0 interface add mon0 type monitor")
     sta1.cmd("ifconfig mon0 up")
+
+    kra.cmd("iw dev kra-wlan0 interface add kra-wlan0u1 type monitor")
+    kra.cmd("iw dev kra-wlan0 interface add kra-wlan0u2 type monitor")
 
     # print hostapd version (hostapd by default outputs on stderr???)
     hostapd = subprocess.Popen(["hostapd"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -75,11 +78,6 @@ def topology():
     # start wireshark
     #sta1.cmd("wireshark &")
 
-    sleep(5)
-
-    # We need AP scanning. Otherwise, roam won't work
-    #makeTerm(sta1, title='Scanning', cmd="bash -c 'echo \"AP Scanning\" && wpa_cli -i sta1-wlan0 scan; read;'")
-
     sleep(15)
 
     # remove any previosly opened interfaces
@@ -87,6 +85,9 @@ def topology():
     # Initialize the FT test monitor
     #makeTerm(sta1, title='KrackAttack', cmd="bash -c 'cd krackattacks-scripts/krackattack && source venv/bin/activate && python krack-ft-test.py wpa_supplicant -D nl80211 -i sta1-wlan0 -c ../../sta1-wlan0_0.staconf;'")
     #makeTerm(sta1, title='wpa_cli')
+    # Connect client with the wireless network (initially to the AP)
+    #makeTerm(sta1, title="Client", cmd ="bash -c 'wpa_supplicant -i sta1-wlan0 -c client_network.conf'")
+    makeTerm(sta1, title="Client")
 
     info("*** Running CLI\n")
     CLI(net)

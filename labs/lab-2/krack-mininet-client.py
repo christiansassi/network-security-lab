@@ -4,8 +4,8 @@
 CVE-2017-13078 (KRACK attack) and determine whether an 
 implementation is vulnerable to attacks in a Mininet-wifi environment."""
 
-__author__ = "Ramon Fontes and UNITN 2022/2023 Network Security master course Group14 Lab"
-__credits__ = ["https://github.com/vanhoefm/krackattacks-scripts"]
+__author__ = "UNITN 2023/2024 Network Security master course Group8 Lab"
+__credits__ = ["https://github.com/vanhoefm/krackattacks-scripts", "https://github.com/vanhoefm/krackattacks-poc-zerokey"]
 
 from time import sleep
 import subprocess
@@ -69,9 +69,8 @@ def topology():
     # remove any previosly opened interfaces
     sta1.cmd("killall wpa_supplicant")
     # connect the client to the AP
-    #makeTerm(sta1, title='Connection', cmd="bash -c 'wpa_supplicant -i sta1-wlan0 -c client-network.conf'")
-
     makeTerm(sta1, title="Connection")
+    
     info("*** Running CLI\n")
     CLI(net)
 
