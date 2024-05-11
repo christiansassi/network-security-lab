@@ -49,6 +49,11 @@ unzip hostap_2_5.zip
 mv hostap_2_5 ../krackattacks-scripts/hostap-wpa_supplicant-2.5
 unzip hostap_2_5.zip
 
+wget https://w1.fi/cgit/hostap/snapshot/hostap_2_10.zip
+unzip hostap_2_10.zip
+mv hostap_2_10 ../krackattacks-scripts/hostap-wpa_supplicant-2.10
+unzip hostap_2_10.zip
+
 cp ../config/config ../krackattacks-scripts/wpa_supplicant/.config
 cp ../config/config ../krackattacks-scripts/hostap-wpa_supplicant-2.3/wpa_supplicant/.config
 cp ../config/config ../krackattacks-scripts/hostap-wpa_supplicant-2.5/wpa_supplicant/.config
@@ -62,7 +67,11 @@ echo -e "${GREEN}Running pysetup.sh...${RESET}"
 echo -e "${GREEN}Running disable-hwcrypto.sh...${RESET}"
 sudo ../krackattacks-scripts/krackattack/disable-hwcrypto.sh
 
-# Final fix
+echo -e "${GREEN}Installing wpa_supplicant 2.10...${RESET}"
+(cd ../krackattacks-scripts/hostap-wpa_supplicant-2.3/wpa_supplicant/ && make clean && make && sudo make install)
+
+# chmod .sh files
+echo -e "${GREEN}Finishing...${RESET}"
 chmod +x ../launcher.sh
 chmod +x ../labs/lab-0/start.sh
 chmod +x ../labs/lab-1/start.sh
