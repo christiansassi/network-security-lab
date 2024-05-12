@@ -48,7 +48,7 @@ if __name__ == "__main__":
     print("")
     logging.info(utils.background.MAGENTA + "PHASE 2" + utils.background.RESET)
 
-    logging.info("Install PTK & GTK")
+    logging.info(utils.color.GREEN + "Install PTK & GTK" + utils.color.RESET)
 
     # In a real attack, this would be blocked by the attacker (mitm client)
     logging.info(utils.color.CYAN + "Sending" + utils.color.RESET + " Enc_1_ptk{Data(...)}")
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     client_socket.send("Enc_2_ptk{Msg4(r+2)}".ljust(params.BUFF_SIZE).encode())
     
 
-    logging.info("Reinstall PTK & GTK")
+    logging.info(utils.color.GREEN + "Reinstall PTK & GTK" + utils.color.RESET)
 
     # Phase 4
     print("")
