@@ -42,12 +42,12 @@ echo -e "${GREEN}Setup krackattacks...${RESET}"
 wget https://w1.fi/cgit/hostap/snapshot/hostap_2_5.zip
 unzip hostap_2_5.zip
 mv hostap_2_5 ../krackattacks-scripts/hostap-wpa_supplicant-2.5
-unzip hostap_2_5.zip
+rm hostap_2_5.zip
 
 wget https://w1.fi/cgit/hostap/snapshot/hostap_2_10.zip
 unzip hostap_2_10.zip
 mv hostap_2_10 ../krackattacks-scripts/hostap-wpa_supplicant-2.10
-unzip hostap_2_10.zip
+rm hostap_2_10.zip
 
 cp ../config/config ../krackattacks-scripts/wpa_supplicant/.config
 cp ../config/config ../krackattacks-scripts/hostap-wpa_supplicant-2.3/wpa_supplicant/.config
