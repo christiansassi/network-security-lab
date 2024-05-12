@@ -50,8 +50,8 @@ mv hostap_2_10 ../krackattacks-scripts/hostap-wpa_supplicant-2.10
 rm hostap_2_10.zip
 
 cp ../config/config ../krackattacks-scripts/wpa_supplicant/.config
-cp ../config/config ../krackattacks-scripts/hostap-wpa_supplicant-2.3/wpa_supplicant/.config
 cp ../config/config ../krackattacks-scripts/hostap-wpa_supplicant-2.5/wpa_supplicant/.config
+cp ../config/config ../krackattacks-scripts/hostap-wpa_supplicant-2.10/wpa_supplicant/.config
 
 echo -e "${GREEN}Running build.sh...${RESET}"
 (cd ../krackattacks-scripts/krackattack/ && ./build.sh)
