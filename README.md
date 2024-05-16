@@ -65,27 +65,15 @@ To access a specific laboratory, simply use the CLI interface provided by the [l
 
 ## Laboratory 0: Simulation
 
-### Introduction
 This laboratory will simulate a KRACK Attack from a theoretical point of view. Specifically, it is possible to interactively replicate step-by-step the 4-way handshake of the WPA2 protocol between a client and an access point (here labeled as *server*). However, there is an attacker that interferes with the normal handshake with the intent of exploiting the vulnerability.
-
-### Hands-on
-By typing `0` and then `Enter` on the menu of `launcher.sh`, it is possible to execute this lab. 
 
 ## Laboratory 1: Access Point (AP) testing
 
-### Introduction
 This laboratory allows the user to check if an access point (*ap1*) is vulnerable or not by using a client (*sta1*) as the "attacker" that forces the victim to reinstall the pairwise key. For this lab, the scenario is composed by two access points (*ap1* and *ap2*) and a client (*sta1*). Specifically, *ap2* is vulnerable because it implements the protocol 802.11r, Fast BSS Transition (FT). 
-
-### Hands-on
-By typing `1` and then `Enter` on the menu of `launcher.sh`, it is possible to execute this lab.
 
 ## Laboratory 2: Client (STA) testing
 
-### Introduction
 This laboratory allows the user to check if a client (*sta1*) is vulnerable or not by using an access point (*ap1*) as the "attacker" that forces the victim to reinstall the pairwise key. For this lab, the scenario is composed only by these two nodes.
-
-### Hands-on
-By typing `2` and then `Enter` on the menu of `launcher.sh`, it is possible to execute this lab. 
 
 ## Laboratory 3: Real attack
 
