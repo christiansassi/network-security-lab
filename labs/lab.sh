@@ -1,6 +1,6 @@
 #!/bin/bash
 
-options=("Lab 0: Simulation" "Lab 1: Access Point (AP) testing" "Lab 2: Client (STA) testing" "Lab 3: Krack Attack" "Ctr+C to exit")
+options=("Lab 0: Simulation" "Lab 1: Access Point (AP) testing" "Lab 2: Client (STA) testing" "Ctr+C to exit")
 width=25
 cols=1
 
@@ -31,9 +31,6 @@ while true; do
 
         2)
             (cd ./labs/lab-2/ ; chmod +x start.sh ; ./start.sh)
-            ;;
-
-        3)
             ;;
 
         *) ;;
