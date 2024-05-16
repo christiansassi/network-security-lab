@@ -28,7 +28,7 @@ KRACK Attack exploits a vulnerability whereby an attacker can create a cloned ne
 Hand-shakes vulnerable to this type of attack are: 4-way handshake, Fast BSS Transition handshake, GroupKey handshake and PeerKey handshake.
 
 > [!IMPORTANT]
-> Further information about the theory behind this vulnerability and the laboratories can be found inside the report available [here]().
+> Further information about the theory behind this vulnerability and the laboratories can be found inside the report available [here](assets/report/KRACK_Attack.pdf).
 
 # Installation
 
