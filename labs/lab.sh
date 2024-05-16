@@ -8,7 +8,7 @@ while true; do
 
     clear
 
-    cat ./assets/splashscreen.txt
+    cat ./assets/vm/splashscreen.txt
 
     for ((i=0;i<${#options[@]};i++)); do 
         string="- ${options[$i]}"
